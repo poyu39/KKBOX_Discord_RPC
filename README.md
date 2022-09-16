@@ -1,5 +1,5 @@
-# Kkbox_Discord_RPC
-Discord 顯示豐富 Kkbox 狀態
+# KKBOX_Discord_RPC
+Discord 顯示 KKBOX 豐富狀態
 
 ### APP截圖
 
