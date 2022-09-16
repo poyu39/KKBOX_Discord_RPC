@@ -3,12 +3,13 @@ from PyQt5 import QtWidgets, QtGui
 from UI import Ui_MainWindow
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.edge.service import Service as EdgeService
 # from selenium.common.exceptions import WebDriverException
-# from msedge.selenium_tools import Edge, EdgeOptions
+from msedge.selenium_tools import Edge, EdgeOptions
 from selenium.webdriver.chrome.options import Options
 from pypresence import Presence
 
-import http.client
+from subprocess import CREATE_NO_WINDOW
 import json
 import pickle
 import time
@@ -81,7 +82,9 @@ def open_web():
     with open('setting.json') as f:
         setting = json.load(f)
     if setting['DRIVER'] == 'msedgedriver.exe':
-        driver = webdriver.Edge('./' + setting['DRIVER'])
+        edge_service = EdgeService('msedgedriver')
+        edge_service.creationflags = CREATE_NO_WINDOW
+        driver = webdriver.Edge('./' + setting['DRIVER'], service=edge_service)
     if setting['DRIVER'] == 'chromedriver':
         driver = webdriver.Chrome('./' + setting['DRIVER'])
 
