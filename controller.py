@@ -4,6 +4,7 @@ from UI import Ui_MainWindow
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.edge.service import Service as EdgeService
+from selenium.webdriver.chrome.service import Service as ChromeService
 # from selenium.common.exceptions import WebDriverException
 from msedge.selenium_tools import Edge, EdgeOptions
 from selenium.webdriver.chrome.options import Options
@@ -68,14 +69,19 @@ class MainWindow_controller(QtWidgets.QMainWindow):
         global driver 
         if stop_flag != True:
             dump_user_data()
-            driver.close()
+            driver.quit()
         stop_flag = True
         self.ui.pushButton_Discord_hook_close.setEnabled(False)
         
     def closeEvent(self, event):
         global close_win
         close_win = True
-        print('window close')
+        # try:
+        #     os.system('taskkill /im msedgedriver.exe /F')
+        #     os.system('taskkill /im chromedriver.exe /F')
+        # except:
+        #     # pass
+        #     print('window close')
 
 def open_web():
     global driver
@@ -86,7 +92,9 @@ def open_web():
         edge_service.creationflags = CREATE_NO_WINDOW
         driver = webdriver.Edge('./' + setting['DRIVER'], service=edge_service)
     if setting['DRIVER'] == 'chromedriver':
-        driver = webdriver.Chrome('./' + setting['DRIVER'])
+        chrome_service = ChromeService('chromedriver')
+        chrome_service.creationflags = CREATE_NO_WINDOW
+        driver = webdriver.Chrome('./' + setting['DRIVER'], service=chrome_service)
 
 def goto_web():
     global driver
