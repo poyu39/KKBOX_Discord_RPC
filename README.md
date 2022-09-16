@@ -38,6 +38,8 @@ Discord 顯示 KKBOX 豐富狀態
 ### Driver Name
 這裡要選擇開啟KKBOX所使用的瀏覽器（目前支援 [Edge](https://developer.microsoft.com/zh-tw/microsoft-edge/tools/webdriver/) / [Chrome](https://chromedriver.chromium.org/)）
 
+ **注意 !! Chromedrvier 版本已經落後目前最新 Chrome 版本，請注意瀏覽器版本。**
+
 1· 下載和自己瀏覽器相同的版本，並放入 APP 資料夾中。
 
 2· 填入下載檔案的名稱
