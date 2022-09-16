@@ -16,7 +16,7 @@ Discord 顯示 KKBOX 豐富狀態
 ![image](https://user-images.githubusercontent.com/42506064/190573253-91d627d7-9df9-436c-a29d-d37524ed1848.png)
 
 
-### Discord Client ID 
+### Application ID 
 
 1· 前往 [Discord Developer Portal](https://discord.com/developers/applications)
 
