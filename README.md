@@ -5,7 +5,7 @@ Discord 顯示 KKBOX 豐富狀態
 
 ![image](https://user-images.githubusercontent.com/42506064/190570095-ed8d5373-4a19-4697-a788-c3a5cf97c592.png)
 
-![image](https://user-images.githubusercontent.com/42506064/190573010-729368e9-22e5-4373-86de-1374d4dca667.png)
+![image](https://user-images.githubusercontent.com/42506064/190841207-4e36c5c5-378b-45a4-bcdc-3f548696126e.png)
 
 
 ## 設定教學
@@ -52,7 +52,7 @@ Discord 顯示 KKBOX 豐富狀態
 
 按下「開啟 KKBOX」會啟動一個獨立網頁且導向至 KKBOX 網頁版撥放器
 
-關閉時請不要直接關閉瀏覽器或是 APP ，如果直接關閉將不會儲存使用資料 ! 
+關閉時請不要直接關閉瀏覽器或是 APP ，如果直接關閉將不會儲存使用資料或產生錯誤 ! 
 
 請按「關閉 KKBOX」 來正確的關閉並儲存資料。
 
