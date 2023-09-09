@@ -1,5 +1,5 @@
-# Kkbox_Discord_RPC
-Discord 顯示豐富 Kkbox 狀態
+# KKBOX_Discord_RPC
+Discord 顯示 KKBOX 豐富狀態
 
 ### APP截圖
 
@@ -14,7 +14,7 @@ Discord 顯示豐富 Kkbox 狀態
 
 ## 設定教學
 
-### Discord Client ID 
+### Application ID 
 
 1· 前往 [Discord Developer Portal](https://discord.com/developers/applications)
 
