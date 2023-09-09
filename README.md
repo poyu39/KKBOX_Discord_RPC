@@ -3,18 +3,16 @@ Discord 顯示 KKBOX 豐富狀態
 
 ### APP截圖
 
-![image](https://user-images.githubusercontent.com/42506064/190570095-ed8d5373-4a19-4697-a788-c3a5cf97c592.png)
+![image](https://i.imgur.com/ec3daNS.png)
 
-![image](https://user-images.githubusercontent.com/42506064/190841207-4e36c5c5-378b-45a4-bcdc-3f548696126e.png)
+![image](https://i.imgur.com/4aGKLeI.png)
+
+![image](https://i.imgur.com/ZR5xmRc.png)
+
+![image](https://i.imgur.com/TYBNxIm.png)
 
 
 ## 設定教學
-
-### KKBOX 帳號
-填入帳號電子郵件用作儲存資料（音質 、 音量等等），不會存取Token，放心使用。
-
-![image](https://user-images.githubusercontent.com/42506064/190573253-91d627d7-9df9-436c-a29d-d37524ed1848.png)
-
 
 ### Application ID 
 
@@ -31,29 +29,9 @@ Discord 顯示 KKBOX 豐富狀態
 
 ![image](https://user-images.githubusercontent.com/42506064/190572481-bf26d00c-ccbb-4495-97d5-57a0b4bf2d7f.png)
 
-4· 將剛剛複製來的 APPLICATION ID 填入 APP 中
+4· 設定 APPLICATION ID
+> 有記憶功能，只有第一次使用或是變更時才需要用到。
 
-![image](https://user-images.githubusercontent.com/42506064/190573403-07897dfc-5681-49d7-8f44-65c1a00c3436.png)
+![image](https://i.imgur.com/ZR5xmRc.png)
 
-### Driver Name
-這裡要選擇開啟KKBOX所使用的瀏覽器（目前支援 [Edge](https://developer.microsoft.com/zh-tw/microsoft-edge/tools/webdriver/) / [Chrome](https://chromedriver.chromium.org/)）
-
- **注意 !! Chromedrvier 版本已經落後目前最新 Chrome 版本，請注意瀏覽器版本。**
-
-1· 下載和自己瀏覽器相同的版本，並放入 APP 資料夾中。
-
-2· 填入下載檔案的名稱
-
-![image](https://user-images.githubusercontent.com/42506064/190574432-9930562d-ab91-4adf-adc6-766f9c47dac4.png)
-
-## 使用教學
-
-![image](https://user-images.githubusercontent.com/42506064/190574765-739f05ae-c865-4680-a771-3593f32bf38c.png)
-
-按下「開啟 KKBOX」會啟動一個獨立網頁且導向至 KKBOX 網頁版撥放器
-
-關閉時請不要直接關閉瀏覽器或是 APP ，如果直接關閉將不會儲存使用資料或產生錯誤 ! 
-
-請按「關閉 KKBOX」 來正確的關閉並儲存資料。
-
-### ENJOY ~
+![image](https://i.imgur.com/TYBNxIm.png)
