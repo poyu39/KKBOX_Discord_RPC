@@ -20,7 +20,10 @@ if __name__ == "__main__":
     while True:
         message = server.get_message()
         if message:
-            kkbox_data = json.loads(message)
-            rpc.update_rpc(**kkbox_data)
-        
+            json_message = json.loads(message)
+            if json_message['type'] == 'reconnect':
+                server.send_message(json.dumps({'type': 'connected'}))
+            if json_message['type'] == 'kkbox_data':
+                kkbox_data = json_message['data']
+                rpc.update_rpc(**kkbox_data)
         time.sleep(1)
