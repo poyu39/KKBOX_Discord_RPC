@@ -1,0 +1,19 @@
+{
+    "name": "KKBoxDiscordPresence",
+    "author": "poyu39",
+    "description": "Discord 顯示 KKBOX 豐富狀態",
+    "version": "1.0.0",
+    "manifest_version": 3,
+    "background": {
+        "service_worker": "background.js"
+    },
+    "permissions": [
+        "scripting",
+        "activeTab",
+        "tabs",
+        "storage",
+        "webRequest",
+        "webNavigation"
+    ],
+    "host_permissions": ["https://*/*"]
+}
