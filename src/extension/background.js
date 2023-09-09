@@ -43,19 +43,33 @@ function connectWebSocket() {
     };
 }
 
+function isOpen(ws) {
+    return ws.readyState === ws.OPEN 
+}
+
 function send_data_to_host(data) {
+    if (!isOpen(socket)) return;
     socket.send(JSON.stringify(data));
 }
 
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     if (message.action == 'reconnect_websocket') {
         socket.close();
-        connectWebSocket();
+        try {
+            connectWebSocket();
+        } catch (error) {
+            console.log('WebSocket 連線錯誤');
+        }
     }
 });
 
 let socket = null;
 connectWebSocket();
+try {
+    connectWebSocket();
+} catch (error) {
+    console.log('WebSocket 連線錯誤');
+}
 
 const intervalTime = 1000;
 setInterval(kkbox_page_js, intervalTime);

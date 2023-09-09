@@ -17,7 +17,12 @@ def listen_kkbox_data():
             if json_message['type'] == 'reconnect':
                 server.send_message(json.dumps({'type': 'connected'}))
             if json_message['type'] == 'kkbox_data':
+                play_status = json_message['data']['play_status']
                 kkbox_data = json_message['data']
+                if play_status:
+                    rpc.set_play_status('play')
+                else:
+                    rpc.set_play_status('pause')
                 rpc.update_rpc(**kkbox_data)
         time.sleep(1)
 
@@ -34,6 +39,4 @@ if __name__ == '__main__':
     
     tray = Tray()
     tray.create_tray()
-    
-    while True:
-        tray.read_events()
+    tray.read_events(rpc)
