@@ -22,6 +22,11 @@ function getSongName() {
     return song_name;
 }
 
+function getSongURL() {
+    let song_url = document.querySelector(`.hayDaa`).querySelector('a').getAttribute('href');
+    return song_url;
+}
+
 function getSongPlayTime() {
     let song_now_time = document.querySelector(`.bR5Q8S.H90HDr`).querySelectorAll('span')[0].innerText;
     let song_time_len = document.querySelector(`.bR5Q8S.H90HDr`).querySelectorAll('span')[1].innerText;
@@ -49,12 +54,13 @@ function listener() {
     result_data['play_status'] = isplaying();
     if (result_data['play_status'] == true) {
         result_data['song_name'] = getSongName();
+        result_data['song_url'] = getSongURL();
         result_data['song_time'] = getSongPlayTime();
         result_data['song_image'] = getSongImage();
         result_data['song_author'] = getSongAuthor();
         send_data_to_bg(JSON.stringify(result_data));
     }
-    // console.log(JSON.stringify(result_data));
+    console.log(JSON.stringify(result_data));
     
 }
 
