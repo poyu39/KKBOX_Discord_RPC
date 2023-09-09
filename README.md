@@ -5,6 +5,12 @@ Discord 顯示豐富 Kkbox 狀態
 
 ![image](https://i.imgur.com/ec3daNS.png)
 
+![image](https://i.imgur.com/4aGKLeI.png)
+
+![image](https://i.imgur.com/ZR5xmRc.png)
+
+![image](https://i.imgur.com/TYBNxIm.png)
+
 
 ## 設定教學
 
@@ -23,6 +29,9 @@ Discord 顯示豐富 Kkbox 狀態
 
 ![image](https://user-images.githubusercontent.com/42506064/190572481-bf26d00c-ccbb-4495-97d5-57a0b4bf2d7f.png)
 
-4· 將剛剛複製來的 APPLICATION ID 填入 APP 中
+4· 設定 APPLICATION ID
+> 有記憶功能，只有第一次使用或是變更時才需要用到。
 
-![image](https://user-images.githubusercontent.com/42506064/190573403-07897dfc-5681-49d7-8f44-65c1a00c3436.png)
+![image](https://i.imgur.com/ZR5xmRc.png)
+
+![image](https://i.imgur.com/TYBNxIm.png)
