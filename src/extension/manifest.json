@@ -8,6 +8,7 @@
         "service_worker": "background.js"
     },
     "action": {  
+        "default_icon": "/media/icon_128.png",
         "default_title": "KKBoxDiscordPresence",
         "default_popup": "popup.html"  
     },
