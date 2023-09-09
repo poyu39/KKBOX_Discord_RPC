@@ -3,7 +3,7 @@ Discord 顯示豐富 Kkbox 狀態
 
 ### APP截圖
 
-![image](https://user-images.githubusercontent.com/42506064/190570095-ed8d5373-4a19-4697-a788-c3a5cf97c592.png)
+![image](https://i.imgur.com/ec3daNS.png)
 
 
 ## 設定教學
