@@ -10,7 +10,7 @@ class Tray:
         self.play_status_temp = 'stop'
 
     def create_tray(self):
-        self.tray = sg.SystemTray(menu=self.menu_def)
+        self.tray = sg.SystemTray(menu=self.menu_def, data_base64=CONFIG.ICON, tooltip='KKBOX Discord RPC')
 
     def read_events(self, rpc: DiscordRPC):
         self.rpc = rpc
