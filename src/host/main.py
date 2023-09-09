@@ -32,11 +32,12 @@ if __name__ == '__main__':
     server_thread = threading.Thread(target=server_thread, args=(server,))
     server_thread.start()
 
-    rpc = DiscordRPC(CONFIG.CLINET_ID)
-    rpc.connect()
+    if CONFIG.CLINET_ID:
+        rpc = DiscordRPC(CONFIG.CLINET_ID)
+        rpc.connect()
     listen_kkbox_data_thread = threading.Thread(target=listen_kkbox_data)
     listen_kkbox_data_thread.start()
     
     tray = Tray()
     tray.create_tray()
-    tray.read_events(rpc)
+    tray.read_events()
