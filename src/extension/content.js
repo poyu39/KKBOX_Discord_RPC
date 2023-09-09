@@ -60,8 +60,7 @@ function listener() {
         result_data['song_author'] = getSongAuthor();
         send_data_to_bg(JSON.stringify(result_data));
     }
-    console.log(JSON.stringify(result_data));
-    
+    // console.log(JSON.stringify(result_data));
 }
 
 listener();
