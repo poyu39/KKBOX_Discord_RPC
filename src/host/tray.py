@@ -5,7 +5,7 @@ from settings import CONFIG
 
 class Tray:
     def __init__(self):
-        self.menu_def = ['BLANK', ['控制狀態: 無', '---', '重新連線 Discord', '關閉程式']]  
+        self.menu_def = ['BLANK', ['重新連線 Discord', '關閉程式']]  
         self.tray = None
         self.play_status_temp = 'stop'
 
