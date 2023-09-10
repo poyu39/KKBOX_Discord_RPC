@@ -8,7 +8,7 @@ from tray import Tray
 def server_thread(websocket_server):
     websocket_server.start_server()
     
-def listen_kkbox_data():
+def listen_kkbox_data(rpc: DiscordRPC):
     # 從 queue 取出 message
     while True:
         message = server.get_message()
@@ -32,12 +32,13 @@ if __name__ == '__main__':
     server_thread = threading.Thread(target=server_thread, args=(server,))
     server_thread.start()
 
+    rpc = DiscordRPC()
     if CONFIG.CLINET_ID:
-        rpc = DiscordRPC(CONFIG.CLINET_ID)
+        rpc.set_client_id(CONFIG.CLINET_ID)
         rpc.connect()
-    listen_kkbox_data_thread = threading.Thread(target=listen_kkbox_data)
+    listen_kkbox_data_thread = threading.Thread(target=listen_kkbox_data, args=(rpc,))
     listen_kkbox_data_thread.start()
     
     tray = Tray()
     tray.create_tray()
-    tray.read_events()
+    tray.read_events(rpc)

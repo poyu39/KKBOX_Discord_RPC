@@ -1,5 +1,5 @@
 import os
-import PySimpleGUIQt as sg
+from PySimpleGUIQt import Text, InputText, Button, Window, SystemTray
 from discord_rpc import DiscordRPC
 from settings import CONFIG
 
@@ -7,22 +7,21 @@ class Tray:
     def __init__(self):
         self.menu_def = ['BLANK', ['設定 Application ID', '重新連線 Discord', '關閉程式']]
         self.layout = [
-            [sg.Text('請輸入 Application ID')],
-            [sg.InputText()],
-            [sg.Button('確定'), sg.Button('取消')],
+            [Text('請輸入 Application ID')],
+            [InputText()],
+            [Button('確定'), Button('取消')],
         ]
         self.tray = None
         self.window = None
         self.play_status_temp = 'stop'
 
     def create_tray(self):
-        self.tray = sg.SystemTray(menu=self.menu_def, data_base64=CONFIG.ICON, tooltip='KKBOX Discord RPC')
+        self.tray = SystemTray(menu=self.menu_def, data_base64=CONFIG.ICON, tooltip='KKBOX Discord RPC')
     
     def create_window(self):
-        self.window = sg.Window('KKBox Discord RPC', self.layout, finalize=True)
+        self.window = Window('KKBox Discord RPC', self.layout, finalize=True)
 
     def read_events(self, rpc: DiscordRPC = None):
-        self.rpc = rpc
         while True:
             menu_item = self.tray.Read()
             if menu_item == '關閉程式':
@@ -44,16 +43,12 @@ class Tray:
                     self.window.close()
                     with open(f'{CONFIG.WORKDIR}/storage/config.yml', 'w', encoding='utf-8') as f:
                         f.write(f'client_id: {values[0]}')
-                    self.reconnect_discord()
+                    CONFIG.reload()
+                    rpc.set_client_id(CONFIG.CLINET_ID)
+                    rpc.reconnect()
                 elif event == '取消':
                     self.window.close()
     
     def close_event(self):
         self.tray.Close()
         os._exit(0)
-        
-    def reconnect_discord(self):
-        if self.rpc is not None:
-            self.rpc.close()
-        self.rpc = DiscordRPC(CONFIG.CLINET_ID)
-        self.rpc.connect()

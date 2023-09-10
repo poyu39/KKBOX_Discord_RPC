@@ -14,5 +14,8 @@ class Config:
         with open(f'{WORKDIR}/storage/icon_128.png', 'rb') as f:
             img_data = f.read()
             self.ICON = base64.b64encode(img_data)
+    
+    def reload(self):
+        self.__init__()
 
 CONFIG = Config()

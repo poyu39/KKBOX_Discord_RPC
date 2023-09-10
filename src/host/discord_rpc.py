@@ -2,7 +2,7 @@ from pypresence import Presence
 
 
 class DiscordRPC:
-    def __init__(self, client_id):
+    def __init__(self, client_id = None):
         self.client_id = client_id
         self.rpc = None
         self.play_status= 'stop'
@@ -38,6 +38,14 @@ class DiscordRPC:
     
     def set_play_status(self, status):
         self.play_status = status
+    
+    def set_client_id(self, client_id):
+        self.client_id = client_id
+    
+    def reconnect(self):
+        if self.rpc:
+            self.rpc.close()
+        self.connect()
     
     def close(self):
         self.rpc.close()
