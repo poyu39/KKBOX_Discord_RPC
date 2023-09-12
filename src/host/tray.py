@@ -28,7 +28,7 @@ class Tray:
                 self.close_event()
                 break
             if menu_item == '重新連線 Discord':
-                self.reconnect_discord()
+                rpc.reconnect()
             if menu_item == '設定 Application ID':
                 if self.window:
                     self.window.Show()
