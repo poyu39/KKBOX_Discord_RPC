@@ -6,7 +6,6 @@ function kkbox_page_js() {
                     target : {tabId : tab.id},
                     files : [ "content.js" ],
                 });
-                // console.log(play_status);
             }
         });
     });
@@ -20,12 +19,15 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             data: kkbox_data
         };
         send_data_to_host(send_data);
-        // console.log(kkbox_data);
     }
 });
 
 function connectWebSocket() {
-    socket = new WebSocket('ws://localhost:9239');
+    socket = new WebSocket('ws://127.0.0.1:9239');
+
+    socket.onerror = function () {
+        console.log('WebSocket 連線錯誤');
+    };
 
     socket.onopen = function () {
         console.log('WebSocket 連線已開啟');
@@ -33,18 +35,15 @@ function connectWebSocket() {
 
     socket.onmessage = function (event) {
         const message = event.data;
-        console.log(`接收到訊息: ${message}`);
-        // chrome.runtime.sendMessage({ action: 'websocketMessage', message });
     };
 
     socket.onclose = function () {
-        // setTimeout(connectWebSocket, 1000);
-        console.log('WebSocket 連線已關閉');
     };
 }
 
 function isOpen(ws) {
-    return ws.readyState === ws.OPEN 
+    if (!ws) return false;
+    return ws.readyState === ws.OPEN
 }
 
 function send_data_to_host(data) {
@@ -54,22 +53,12 @@ function send_data_to_host(data) {
 
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     if (message.action == 'reconnect_websocket') {
-        socket.close();
-        try {
+        if (!isOpen(socket)) {
             connectWebSocket();
-        } catch (error) {
-            console.log('WebSocket 連線錯誤');
         }
     }
 });
 
 let socket = null;
-connectWebSocket();
-try {
-    connectWebSocket();
-} catch (error) {
-    console.log('WebSocket 連線錯誤');
-}
-
 const intervalTime = 1000;
 setInterval(kkbox_page_js, intervalTime);

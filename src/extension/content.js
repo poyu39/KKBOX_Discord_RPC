@@ -7,14 +7,7 @@ function isplaying() {
         } else {
             return false;
         }
-        
     }
-    // if (play_status == '暫停') {
-    //     return true;
-    // } else if (play_status == '繼續播放') {
-    //     return false;
-    // }
-    
 }
 
 function getSongName() {
