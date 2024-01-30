@@ -6,6 +6,8 @@ from pypresence import Presence
 import json
 import time
 import os
+import sys
+
 
 class KKBOX_Discord_RPC:
     def __init__(self, url):
@@ -15,10 +17,25 @@ class KKBOX_Discord_RPC:
         self.driver = webdriver.Chrome(options=chrome_options)
         self.is_save_cookies = False
         
-        self.working_dir = os.path.dirname(os.path.abspath(__file__))
-        self.cookies_file = self.working_dir + '/storage/cookies.json'
-        self.local_storage_file = self.working_dir + '/storage/local_storage.json'
-        self.config_file = self.working_dir + '/storage/config.json'
+        # create appdata folder
+        self.appdata_path = os.path.join(os.getenv('APPDATA'), 'KKBOX_Discord_RPC')
+        if not os.path.isdir(self.appdata_path):
+            os.mkdir(self.appdata_path)
+        
+        self.config_path = os.path.join(self.appdata_path, 'config.json')
+        if not os.path.isfile(self.config_path):
+            with open(self.config_path, 'w') as file:
+                json.dump({'application_id': ''}, file)
+        
+        self.cookies_path = os.path.join(self.appdata_path, 'cookies.json')
+        if not os.path.isfile(self.cookies_path):
+            with open(self.cookies_path, 'w') as file:
+                json.dump([], file)
+        
+        self.local_storage_path = os.path.join(self.appdata_path, 'local_storage.json')
+        if not os.path.isfile(self.local_storage_path):
+            with open(self.local_storage_path, 'w') as file:
+                json.dump({}, file)
         
         self.local_storage = {}
         self.song_data = {
@@ -32,10 +49,13 @@ class KKBOX_Discord_RPC:
         self.last_time = 0
         self.rpc_activity = False
 
+    def resource_path(self, relative_path):
+        """ Get absolute path to resource, works for dev and for PyInstaller """
+        base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+        return os.path.join(base_path, relative_path)
+    
     def load_cookies(self):
-        if not os.path.isfile(self.cookies_file):
-            return
-        with open(self.cookies_file, 'r') as file:
+        with open(self.cookies_path, 'r') as file:
             cookies = json.load(file)
         for cookie in cookies:
             self.driver.add_cookie(cookie)
@@ -43,34 +63,32 @@ class KKBOX_Discord_RPC:
     
     def save_cookies(self):
         cookies = self.driver.get_cookies()
-        with open(self.cookies_file, 'w') as file:
+        with open(self.cookies_path, 'w') as file:
             json.dump(cookies, file)
         print('cookies saved')
         self.is_save_cookies = True
     
     def load_local_storage(self):
-        if os.path.isfile(self.local_storage_file):
-            with open(self.local_storage_file, 'r') as file:
+        if os.path.isfile(self.local_storage_path):
+            with open(self.local_storage_path, 'r') as file:
                 local_storage = json.load(file)
-                if local_storage == {}:
-                    return
                 for key in local_storage:
                     self.driver.execute_script(
                         f'window.localStorage.setItem(arguments[0], arguments[1]);',
                         f'{key}',
                         f'{local_storage[key]}'
                     )
-            print('load local_storage')
+            print('local_storage loaded')
     
     def dump_local_storage(self):
         local_storage_raw = app.driver.execute_script('return window.localStorage;')
         for key in local_storage_raw:
             self.local_storage[key] = local_storage_raw[key]
-                
+
     def save_local_storage(self):
-        with open(self.local_storage_file, 'w') as file:
+        with open(self.local_storage_path, 'w') as file:
             json.dump(self.local_storage, file)
-        print('saved local_storage')
+        print('local_storage saved')
     
     def check_browser_active(self):
         try:
@@ -86,7 +104,7 @@ class KKBOX_Discord_RPC:
             self.song_data['image'] = self.driver.find_element(By.XPATH, "//div[@class='_cover_16fkr_6']//a//img").get_attribute('src')
             self.song_data['now_time'] = self.driver.find_element(By.XPATH, "//div[@class='_time-info_czveb_1 _time-info_6q6zi_19']//span[1]").text
             # convert time to second
-            self.song_data['now_time'] = int(self.song_data['now_time'][0])*600 + int(self.song_data['now_time'][1]) * 60 + int(self.song_data['now_time'][3])*10 + int(self.song_data['now_time'][4])
+            self.song_data['now_time'] = int(self.song_data['now_time'][0])*600 + int(self.song_data['now_time'][1])*60 + int(self.song_data['now_time'][3])*10 + int(self.song_data['now_time'][4])
         except Exception as e:
             pass
         if self.song_data['now_time']:
@@ -97,10 +115,10 @@ class KKBOX_Discord_RPC:
             self.last_time = self.song_data['now_time']
 
     def connect_discord_rpc(self):
-        if not os.path.isfile(self.config_file):
-            self.input_application_id()
-        with open(self.config_file, 'r') as file:
+        with open(self.config_path, 'r') as file:
             application_id = json.load(file)['application_id']
+        if application_id == '':
+            application_id = self.input_application_id()
         try:
             self.RPC = Presence(application_id)
             self.RPC.connect()
@@ -112,9 +130,9 @@ class KKBOX_Discord_RPC:
             self.driver.execute_script(prompt_script)
             while EC.alert_is_present()(self.driver):
                 pass
-            os.remove(self.config_file)
+            with open(self.config_path, 'r') as file:
+                application_id = ''
             self.driver.quit()
-            os._exit(0)
     
     def input_application_id(self):
         prompt_script = 'window.application_id = prompt("請輸入 Application ID");'
@@ -123,8 +141,9 @@ class KKBOX_Discord_RPC:
             pass
         application_id = self.driver.execute_script('return window.application_id;')
         print(application_id)
-        with open(self.config_file, 'w') as file:
+        with open(self.config_path, 'w') as file:
             json.dump({'application_id': application_id}, file)
+        return application_id
 
     def dc_rpc(self):
         if self.RPC is None:
@@ -135,7 +154,7 @@ class KKBOX_Discord_RPC:
             self.rpc_data = {
                 'state': self.song_data['artist'],
                 'details': f"{self.song_data['name']} ",
-                'large_text': f'正在聽: {self.song_data["name"]}',
+                'large_text': f"正在聽: {self.song_data['name']}",
                 'large_image': self.song_data['image'],
                 'small_image': 'https://i.imgur.com/BOIijD9.png',
                 'small_text': 'KKBOX Discord RPC',
@@ -163,3 +182,8 @@ if __name__ == '__main__':
         app.dc_rpc()
         time.sleep(1)
     app.save_local_storage()
+    try:
+        app.RPC.close()
+        app.driver.quit()
+    except:
+        pass
