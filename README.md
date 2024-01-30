@@ -1,16 +1,11 @@
 # KKBOX_Discord_RPC
 Discord 顯示 KKBOX 豐富狀態
 
-### APP截圖
+## 簡介
 
-![image](https://i.imgur.com/ec3daNS.png)
+這是一個可以讓 Discord 顯示 KKBOX 豐富狀態的小工具，基於 [Selenium](https://www.selenium.dev/) + [pypresence](https://github.com/qwertyquerty/pypresence)。
 
-![image](https://i.imgur.com/4aGKLeI.png)
-
-![image](https://i.imgur.com/ZR5xmRc.png)
-
-![image](https://i.imgur.com/TYBNxIm.png)
-
+![image](https://github.com/poyu39/KKBOX_Discord_RPC/assets/42506064/866ffbc9-cdb0-4eed-87ed-713f0db2ab7f)
 
 ## 設定教學
 
@@ -30,31 +25,6 @@ Discord 顯示 KKBOX 豐富狀態
 ![image](https://user-images.githubusercontent.com/42506064/190572481-bf26d00c-ccbb-4495-97d5-57a0b4bf2d7f.png)
 
 4. 設定 APPLICATION ID
-> 有記憶功能，只有第一次使用或是變更時才需要用到。
+> 如果需要變更請到 `%appdata%\KKBOX_Discord_RPC\config.json` 修改
 
-![image](https://i.imgur.com/ZR5xmRc.png)
-
-![image](https://i.imgur.com/TYBNxIm.png)
-
-#### Chrome/Edge 擴充功能安裝
-
-1. 將 extension.zip 下載並解壓縮
-2. 於瀏覽器網址列輸入下列指令來開啟管理擴充功能頁面
-- Edge
-```
-edge://extensions/
-```
-- Chrome
-```
-chrome://extensions/
-```
-3. 匯入 extension
-> 請開啟開發人員模式，可能因各瀏覽器版本不同會也些許差異。
-
-- Edge
-  
-![](https://i.imgur.com/r6TJla1.png)
-
-- Chrome
-  
-![](https://i.imgur.com/HbbgGy0.png)
+![image](https://github.com/poyu39/KKBOX_Discord_RPC/assets/42506064/07832bdf-1379-42c4-9045-10ae76e86405)
