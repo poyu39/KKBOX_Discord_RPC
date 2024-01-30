@@ -187,3 +187,4 @@ if __name__ == '__main__':
         app.driver.quit()
     except:
         pass
+    os._exit(0)
