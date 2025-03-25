@@ -19,7 +19,7 @@
 
 ## 📥 安裝教學
 
-1️⃣ 下載最新版本的 [KKBOX Discord RPC]()，然後解壓縮到 KKBOX 的安裝目錄。
+1️⃣ 下載最新版本的 [KKBOX Discord RPC](https://github.com/poyu39/KKBOX_Discord_RPC/releases/download/v4.0.0/KKBOX_Discord_RPC_v4.0.0.zip)，然後解壓縮到 KKBOX 的安裝目錄。
 
 📂 **通常安裝位置**：
 ```

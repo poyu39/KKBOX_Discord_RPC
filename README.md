@@ -1,5 +1,5 @@
 <div align="center">
-<h1>🎵 KKBOX Discord RPC 🎶</h1>
+<h1><img src="./media/icon_128.png" width="30px"> KKBOX Discord RPC</h1>
 
 <img src="https://img.shields.io/github/last-commit/poyu39/KKBOX_Discord_RPC.svg?style=for-the-badge">
 <img src="https://img.shields.io/github/release/poyu39/KKBOX_Discord_RPC?style=for-the-badge&label=LAST_RELEASE">
@@ -18,7 +18,7 @@
 
 ## 📥 Installation Guide
 
-1️⃣ Download the latest version of [KKBOX Discord RPC](https://github.com/poyu39/KKBOX_Discord_RPC/blob/main/releases/KKBOX_Discord_RPC_v4.0.0.zip) and extract it into the KKBOX installation directory.
+1️⃣ Download the latest version of [KKBOX Discord RPC](https://github.com/poyu39/KKBOX_Discord_RPC/releases/download/v4.0.0/KKBOX_Discord_RPC_v4.0.0.zip) and extract it into the KKBOX installation directory.
 
 📂 **Typical installation path**:
 ```
