@@ -153,6 +153,4 @@ cython_debug/
 
 # custom
 .vscode/settings.json
-src/host/storage/config.yml
-src/host/output/
-src/output/
+storage/config.json
