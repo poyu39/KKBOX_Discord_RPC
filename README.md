@@ -1,30 +1,69 @@
-# KKBOX_Discord_RPC
-Discord 顯示 KKBOX 豐富狀態
+<div align="center">
+<h1>🎵 KKBOX Discord RPC 🎶</h1>
 
-## 簡介
+<img src="https://img.shields.io/github/last-commit/poyu39/KKBOX_Discord_RPC.svg?style=for-the-badge">
+<img src="https://img.shields.io/github/release/poyu39/KKBOX_Discord_RPC?style=for-the-badge&label=LAST_RELEASE">
+<img src="https://img.shields.io/github/stars/poyu39/KKBOX_Discord_RPC?style=for-the-badge&label=Stars">
 
-這是一個可以讓 Discord 顯示 KKBOX 豐富狀態的小工具，基於 [Selenium](https://www.selenium.dev/) + [pypresence](https://github.com/qwertyquerty/pypresence)。
+<p>✨ This is a tool that allows Discord to display rich KKBOX statuses! ✨</p>
 
-![image](https://github.com/poyu39/KKBOX_Discord_RPC/assets/42506064/866ffbc9-cdb0-4eed-87ed-713f0db2ab7f)
+<img src="./media/app_screenshot_2.png" alt="Application Screenshot">
+<br>
 
-## 設定教學
+**English** | [繁體中文](README_zh-tw.md)
 
-### Application ID 
+</div>
 
-1. 前往 [Discord Developer Portal](https://discord.com/developers/applications)
+---
 
-![image](https://user-images.githubusercontent.com/42506064/190571984-5705efc0-e829-42ce-a1dc-f66cbbeb1750.png)
+## 📥 Installation Guide
 
+1️⃣ Download the latest version of [KKBOX Discord RPC](https://github.com/poyu39/KKBOX_Discord_RPC/blob/main/releases/KKBOX_Discord_RPC_v4.0.0.zip) and extract it into the KKBOX installation directory.
 
-2. 點選 New Application 創建一個APP
+📂 **Typical installation path**:
+```
+C:\Users\YourUsername\AppData\Local\Programs\@universalelectron-shell
+```
 
-![image](https://user-images.githubusercontent.com/42506064/190571906-74766290-1827-4a80-8d7e-ce78cecb090b.png)
+2️⃣ Follow the **Configuration Guide** below to set up the Discord Application ID, and you're ready to go! 🚀🎧
 
-3. 前往 General Information 頁面複製 APPLICATION ID
+---
 
-![image](https://user-images.githubusercontent.com/42506064/190572481-bf26d00c-ccbb-4495-97d5-57a0b4bf2d7f.png)
+## ⚙️ Configuration Guide
 
-4. 設定 APPLICATION ID
-> 如果需要變更請到 `%appdata%\KKBOX_Discord_RPC\config.json` 修改
+#### 1️⃣ Go to the [Discord Developer Portal](https://discord.com/developers/applications) 🌐
+<div align="center">
+    <img src="./media/app_screenshot_3.png" width="500px">
+</div>
 
-![image](https://github.com/poyu39/KKBOX_Discord_RPC/assets/42506064/07832bdf-1379-42c4-9045-10ae76e86405)
+#### 2️⃣ Click **New Application** to create a new app 🆕
+<div align="center">
+    <img src="./media/app_screenshot_4.png" width="300px">
+</div>
+
+#### 3️⃣ Go to the **General Information** page and copy the **APPLICATION ID** 🔑
+<div align="center">
+    <img src="./media/app_screenshot_5.png" width="300px">
+</div>
+
+#### 4️⃣ Configure `config.json` ⚙️
+After extraction, the folder should contain a `storage` directory. Open `config.json` inside.
+
+🔧 Change `applicationId` to the copied APPLICATION ID.
+
+🔧 Set `kkbox_exe_path` to the path of KKBOX.exe.
+
+```json
+{
+    "kkbox_exe_path": "C:\\Users\\username\\AppData\\Local\\Programs\\@universalelectron-shell\\KKBOX.exe",
+    "application_id": "1017000000000000000"
+}
+```
+
+#### 5️⃣ Launch KKBOX Discord RPC 🚀
+
+📌 To display KKBOX status on Discord, first run `KKBOX_Discord_RPC_v4.0.0.exe`. It will automatically launch KKBOX.
+
+📌 `KKBOX_Discord_RPC_v4.0.0.exe` runs in the background to capture the currently playing content. If you don't want this feature, you can launch KKBOX manually via `KKBOX.exe`.
+
+---
